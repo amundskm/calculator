@@ -89,19 +89,22 @@ return str
 const enterListener = document.querySelector('#buttonEnter');
 enterListener.addEventListener('click', function(e){
     let para = document.createElement("p");
-    let node = document.createTextNode(expression);
+    let node = document.createTextNode(expression + "=");
     para.appendChild(node);
     let hist = document.getElementById("history");
     hist.appendChild(para);
     expression = addMultiple(expression)
     ans = checkPara(expression);
-    
     let ansPara = document.createElement("p");
     let ansNode = document.createTextNode(ans);
     ansPara.appendChild(ansNode);
-    let inputParent = document.getElementById("text-box");
-    inputParent.appendChild(ansPara);
-    
+    hist.appendChild(ansPara);
+    ansPara.style.textAlign = "right";
+    para.style.textAlign = "left";
+
+    expression = ans;
+    const showText = document.querySelector("#expression p");
+    showText.textContent = expression;
     
 })
 
